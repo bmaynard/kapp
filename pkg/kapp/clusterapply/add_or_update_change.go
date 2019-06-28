@@ -282,6 +282,10 @@ func (c AddOrUpdateChange) notify(res ctlres.Resource, isParent bool, state ctlr
 		msg += ": " + state.Message
 	}
 
+	if !notifyChange(msg) {
+		return
+	}
+
 	c.ui.Notify(msg)
 }
 

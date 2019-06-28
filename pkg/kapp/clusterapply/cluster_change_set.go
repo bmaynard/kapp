@@ -113,7 +113,7 @@ func (c ClusterChangeSet) waitForClusterChanges(changes []ClusterChange) error {
 
 		for _, change := range inProgressChanges {
 			desc := change.WaitDescription()
-			if len(desc) > 0 {
+			if len(desc) > 0 && notifyChange(desc) {
 				c.ui.Notify("waiting on %s", desc)
 			}
 
